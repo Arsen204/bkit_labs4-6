@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Best technologies{% endblock %}
+
+{% block content %}
+    <div class="main-menu">
+        <ul>
+            {% for lang in langs %}
+                <li><a href="{% url 'lang_url' lang.id %}">{{ lang.name }}</a></li>
+            {% empty %}
+                <li>Список пуст</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

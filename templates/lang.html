@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ lang.name }}{% endblock %}
+
+{% block content %}
+    {% load static %}
+    <div class="container">
+        <div class="card">
+            <div class="card__header" style="text-align: center">
+                {% if lang.id == "py" %}
+                    <img src="{% static 'img/' %}{{ lang.id }}.png" alt="{{ lang.id }}" class="card__image" width="600" style="display: inline; max-width: 90%; padding: 20px">
+                {% else %}
+                    <img src="{% static 'img/' %}{{ lang.id }}.png" alt="{{ lang.id }}" class="card__image" width="600">
+                {% endif %}
+            </div>
+            <div class="card__body">
+                <h4>{{ lang.name }}</h4>
+                <p>{{ lang.description }}</p>
+            </div>
+            <div class="card__footer">
+                <div class="user">
+                    <div class="user__info">
+                        <a href="{% url 'master_url' %}" class="link">
+                            <span class="mask">
+                            <div class="link-container">
+                              <span class="link-title1 title">Back</span>
+                              <span class="link-title2 title">Back</span>
+                            </div>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-menu">
+            <p3>People worked with this technology: </p3><br><br>
+            <ul>
+                {% for person in persons %}
+                    <li>{{ person.name }} Experience: {{ person.experience }}</li><br>
+                {% empty %}
+                    <p4>Список пуст</p4>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
